@@ -23,11 +23,11 @@
   "require-dev": {
     "symfony/symfony": "^2.6",
     "phpunit/phpunit": "^4|^5",
-    "silex/silex": "^1.3.0"
+    "silex/silex": "~2.0"
   },
   "require": {
     "alchemy/queue-component": "^0.1.4",
-    "php": ">=5.5"
+    "php": "~7.0"
   },
   "extra": {
     "branch-alias": {
