@@ -48,6 +48,7 @@ class QueueConfiguration implements ConfigurationInterface
                             ->scalarNode('registry')->defaultValue(null)->end()
                             ->scalarNode('name')->end()
                             ->scalarNode('host')->end()
+                            ->scalarNode('ssl')->defaultValue(false)->end()
                             ->scalarNode('port')->defaultValue(5672)->end()
                             ->scalarNode('vhost')->defaultValue('/')->end()
                             ->scalarNode('user')->defaultValue('guest')->end()
