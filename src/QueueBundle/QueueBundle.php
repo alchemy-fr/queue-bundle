@@ -13,17 +13,18 @@ namespace Alchemy\QueueBundle;
 
 use Alchemy\QueueBundle\DependencyInjection\QueueExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class QueueBundle extends Bundle
 {
 
-    public function build(ContainerBuilder $container)
+    public function build(ContainerBuilder $container): void
     {
         parent::build($container);
     }
 
-    public function getContainerExtension()
+    public function getContainerExtension(): ?ExtensionInterface
     {
         return new QueueExtension();
     }

@@ -16,17 +16,29 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class QueueConfiguration implements ConfigurationInterface
 {
+    /**
+     * @var string
+     */
+    private $rootName;
+
+    /**
+     * @param string $rootName
+     */
+    public function __construct($rootName = 'alchemy_queue')
+    {
+        $this->rootName = $rootName;
+    }
 
     /**
      * Generates the configuration tree builder.
      *
      * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder The tree builder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $builder = new TreeBuilder();
+        $builder = new TreeBuilder($this->rootName);
 
-        $builder->root('alchemy_queue')
+        $builder->getRootNode()
             ->children()
                 ->scalarNode('logger')->defaultNull()->end()
                 ->arrayNode('queues')
@@ -36,8 +48,8 @@ class QueueConfiguration implements ConfigurationInterface
                             ->scalarNode('registry')->defaultValue(null)->end()
                             ->scalarNode('name')->end()
                             ->scalarNode('host')->end()
-                            ->scalarNode('port')->defaultValue(5672)->end()
                             ->scalarNode('ssl')->defaultValue(false)->end()
+                            ->scalarNode('port')->defaultValue(5672)->end()
                             ->scalarNode('vhost')->defaultValue('/')->end()
                             ->scalarNode('user')->defaultValue('guest')->end()
                             ->scalarNode('password')->defaultValue('guest')->end()

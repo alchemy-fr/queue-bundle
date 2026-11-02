@@ -15,18 +15,27 @@ use Alchemy\QueueBundle\Queue\QueueRegistry;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 
-class QueueExtension extends ConfigurableExtension
+class QueueExtension extends Extension
 {
     /**
      * @param array $config
      * @param ContainerBuilder $container
      * @return QueueConfiguration
      */
-    public function getConfiguration(array $config, ContainerBuilder $container)
+    public function getConfiguration(array $config, ContainerBuilder $container): QueueConfiguration
     {
         return new QueueConfiguration();
+    }
+
+    /**
+     * @param array $configs
+     * @param ContainerBuilder $container
+     */
+    public function load(array $configs, ContainerBuilder $container): void
+    {
+        $this->loadInternal($this->processConfiguration($this->getConfiguration($configs, $container), $configs), $container);
     }
 
     /**
