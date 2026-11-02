@@ -42,6 +42,7 @@ class QueueExtensionTest extends TestCase
                 'user' => 'guest',
                 'password' => 'guest',
                 'timeout' => 0,
+                'ssl' => false,
             ]]],
         ], $definition->getMethodCalls());
     }
