@@ -9,7 +9,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Alchemy\\QueueBundle\\": "src/QueueBundle"
+            "Alchemy\\QueueBundle\\": "src/QueueBundle",
+            "Alchemy\\QueueProvider\\": "src/QueueProvider"
         }
     },
     "autoload-dev": {
@@ -26,15 +27,14 @@
         "symfony/http-kernel": "^7.4"
     },
     "require": {
-        "php": "^8.5",
-        "alchemy/queue-component": "^6.0",
+        "php": "^8.2",
+        "alchemy/queue-component": "^5.0",
         "symfony/config": "^7.4",
         "symfony/dependency-injection": "^7.4",
         "symfony/http-kernel": "^7.4"
     },
     "suggest": {
-        "symfony/config": "To use the Symfony bundle (^7.4)",
-        "symfony/dependency-injection": "To use the Symfony bundle (^7.4)",
-        "symfony/http-kernel": "To use the Symfony bundle (^7.4)"
+        "silex/silex": "For the Silex service provider",
+        "pimple/pimple": "For the Silex service provider"
     }
 }
